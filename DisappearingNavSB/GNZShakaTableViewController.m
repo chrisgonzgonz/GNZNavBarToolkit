@@ -80,7 +80,9 @@
         
         CGRect tempRect = CGRectMake(navBarFrame.origin.x, kStatusBarHeight, navBarFrame.size.width, navBarFrame.size.height);
         self.navigationController.navigationBar.frame = tempRect;
-//        for (UIView *subview in self.navigationController.navigationBar.subviews) subview.alpha = 1;
+
+        self.label.alpha = 1;
+        
         [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                     [[UIColor blackColor] colorWithAlphaComponent:1],
                                                     NSForegroundColorAttributeName,
@@ -90,11 +92,8 @@
         
 //
 //        self.profileTable.frame = CGRectMake(collectionViewFrame.origin.x, paddingTop, collectionViewFrame.size.width, screenFrame.size.height-paddingTop);
-
         
-//        CGPoint anchor = self.buttView.center;
         self.label.transform = CGAffineTransformMakeScale(1, 1);
-//        self.buttView.center = anchor;
 
         NSLog(@"Original Label Container Frame Y: %f", self.buttView.frame.origin.y);
         CGRect labelContainerFrame = self.label.frame;
@@ -120,14 +119,13 @@
 //
         CGRect labelContainerFrame = self.label.frame;
         labelContainerFrame.origin.y = (offset+64)/2;
-//        labelContainerFrame.origin.y += (1-(offset+64)/44)*self.label.frame.size.height;
+
         self.label.frame = labelContainerFrame;
         
     } else { // header completely gone
         CGRect tempRect = CGRectMake(navBarFrame.origin.x, kStatusBarHeight-navBarFrame.size.height, navBarFrame.size.width, navBarFrame.size.height);
         self.navigationController.navigationBar.frame = tempRect;
-//        for (UIView *subview in self.navigationController.navigationBar.subviews) subview.alpha = 0;
-//        self.navigationItem.titleView.alpha = 0;
+
         [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                                          [[UIColor blackColor] colorWithAlphaComponent:0],
                                                                          NSForegroundColorAttributeName,
@@ -137,14 +135,10 @@
 //
 //        self.profileTable.frame = CGRectMake(collectionViewFrame.origin.x, paddingTop-headerHeight, collectionViewFrame.size.width, screenFrame.size.height-paddingTop+headerHeight);
         
-//        CGPoint anchor = self.buttView.center;
         self.label.transform = CGAffineTransformMakeScale(0, 0);
-//        self.buttView.center = anchor;
         
-//        CGAffineTransform t = CGAffineTransformMakeScale(0, 0);
-//        t = CGAffineTransformTranslate(t, self.buttView.frame.size.width/2, self.buttView.frame.size.height/2);
-//        self.buttView.transform = t;
-                self.buttView.frame = CGRectMake(0, 0, self.buttView.frame.size.width, self.buttView.frame.size.height);
+
+//        self.buttView.frame = CGRectMake(0, 0, self.buttView.frame.size.width, self.buttView.frame.size.height);
         
     }
     
