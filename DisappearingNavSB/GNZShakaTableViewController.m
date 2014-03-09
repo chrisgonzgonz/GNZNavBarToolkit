@@ -20,6 +20,10 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    
+    self.navigationItem.title = @"NeatView";
+    UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(add:)];
+    self.navigationItem.rightBarButtonItem = bbi;
 }
 
 #pragma mark - Table view data source
@@ -64,14 +68,13 @@
     CGFloat offset = scrollView.contentOffset.y;
     CGRect navBarFrame = self.navigationController.navigationBar.frame;
     CGFloat adjustedOffset = offset;
-    CGFloat adjustedTracker = self.lastOffset - navBarFrame.size.height;
     
     NSLog(@"ContentOffset: %f, NavbarFrameHeight: %f",offset,navBarFrame.origin.y);
     
     CGFloat headerRemains = navBarFrame.origin.y + navBarFrame.size.height - kStatusBarHeight;
 //    CGFloat paddingTop = kStatusBarHeight+headerHeight;
     
-    if (adjustedOffset<=-64 || adjustedOffset <= adjustedTracker) { // everything back to normal
+    if (adjustedOffset<=-64) { // everything back to normal
         
         CGRect tempRect = CGRectMake(navBarFrame.origin.x, kStatusBarHeight, navBarFrame.size.width, navBarFrame.size.height);
         self.navigationController.navigationBar.frame = tempRect;
@@ -83,7 +86,6 @@
                                                     NSFontAttributeName,
                                                     nil]];
         
-        NSLog(@"Bar Tint: %@", [[self.navigationController.navigationBar barTintColor] description]);
 //
 //        self.profileTable.frame = CGRectMake(collectionViewFrame.origin.x, paddingTop, collectionViewFrame.size.width, screenFrame.size.height-paddingTop);
 //        
@@ -93,7 +95,7 @@
 //        imgContainerFrame.origin.y = 0;
 //        self.headerImageContainer.frame = imgContainerFrame;
         
-    } else if ((offset/2>-64 && offset<=-20) || (offset/2>adjustedTracker && offset<= adjustedTracker+navBarFrame.size.height) ) {
+    } else if (offset/2>-64 && offset<=-20) {
         CGRect tempRect = CGRectMake(navBarFrame.origin.x, -navBarFrame.size.height-adjustedOffset, navBarFrame.size.width, navBarFrame.size.height);
         self.navigationController.navigationBar.frame = tempRect;
         
@@ -139,18 +141,19 @@
     
 }
 
--(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
-    self.lastOffset = scrollView.contentOffset.y;
-    NSLog(@"Last decelerating for scroll: %f", self.lastOffset);
-}
+//-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+//{
+//    self.lastOffset = scrollView.contentOffset.y;
+//    NSLog(@"Last decelerating for scroll: %f", self.lastOffset);
+//}
+//
+//-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+//    if (decelerate) {
+//        self.lastOffset = scrollView.contentOffset.y;
+//        NSLog(@"Last offset for scroll: %f", self.lastOffset);
+//    }
+//}
 
--(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    if (!decelerate) {
-        self.lastOffset = scrollView.contentOffset.y;
-        NSLog(@"Last offset for scroll: %f", self.lastOffset);
-    }
-}
 //-(void)scrollViewDidScroll:(UIScrollView *)scrollView
 //{
 //    [self neatScroll:scrollView];
