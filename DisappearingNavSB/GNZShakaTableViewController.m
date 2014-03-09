@@ -95,10 +95,11 @@
 //        CGPoint anchor = self.buttView.center;
         self.label.transform = CGAffineTransformMakeScale(1, 1);
 //        self.buttView.center = anchor;
-//
-//        CGRect imgContainerFrame = self.headerImageContainer.frame;
-//        imgContainerFrame.origin.y = 0;
-//        self.headerImageContainer.frame = imgContainerFrame;
+
+        NSLog(@"Original Label Container Frame Y: %f", self.buttView.frame.origin.y);
+        CGRect labelContainerFrame = self.label.frame;
+        labelContainerFrame.origin.y = 0;
+        self.label.frame = labelContainerFrame;
         
     } else if (offset/2>-64 && offset<=-20) {
         CGRect tempRect = CGRectMake(navBarFrame.origin.x, -navBarFrame.size.height-offset, navBarFrame.size.width, navBarFrame.size.height);
@@ -117,9 +118,10 @@
         
         self.label.alpha = headerRemains/navBarFrame.size.height;
 //
-//        CGRect imgContainerFrame = self.headerImageContainer.frame;
-//        imgContainerFrame.origin.y = offset/4;
-//        self.headerImageContainer.frame = imgContainerFrame;
+        CGRect labelContainerFrame = self.label.frame;
+        labelContainerFrame.origin.y = (offset+64)/2;
+//        labelContainerFrame.origin.y += (1-(offset+64)/44)*self.label.frame.size.height;
+        self.label.frame = labelContainerFrame;
         
     } else { // header completely gone
         CGRect tempRect = CGRectMake(navBarFrame.origin.x, kStatusBarHeight-navBarFrame.size.height, navBarFrame.size.width, navBarFrame.size.height);
