@@ -24,6 +24,9 @@
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="L5n-Ci-fMQ"/>
+                    <connections>
+                        <outlet property="tableView" destination="jk9-c9-DEb" id="dgr-jO-BpQ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DXU-s3-TNa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

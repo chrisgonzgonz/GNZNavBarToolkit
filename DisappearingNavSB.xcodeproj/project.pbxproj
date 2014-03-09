@@ -22,6 +22,7 @@
 		721054D618CC027E0012C6C7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 721054D418CC027E0012C6C7 /* InfoPlist.strings */; };
 		721054D818CC027E0012C6C7 /* DisappearingNavSBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 721054D718CC027E0012C6C7 /* DisappearingNavSBTests.m */; };
 		721054E318CC02D10012C6C7 /* GNZShakaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 721054E218CC02D10012C6C7 /* GNZShakaTableViewController.m */; };
+		721054E618CC26EC0012C6C7 /* GNZNeatScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 721054E518CC26EC0012C6C7 /* GNZNeatScrollViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		721054D718CC027E0012C6C7 /* DisappearingNavSBTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DisappearingNavSBTests.m; sourceTree = "<group>"; };
 		721054E118CC02D10012C6C7 /* GNZShakaTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNZShakaTableViewController.h; sourceTree = "<group>"; };
 		721054E218CC02D10012C6C7 /* GNZShakaTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNZShakaTableViewController.m; sourceTree = "<group>"; };
+		721054E418CC26EC0012C6C7 /* GNZNeatScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNZNeatScrollViewController.h; sourceTree = "<group>"; };
+		721054E518CC26EC0012C6C7 /* GNZNeatScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNZNeatScrollViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +118,8 @@
 		721054B218CC027E0012C6C7 /* DisappearingNavSB */ = {
 			isa = PBXGroup;
 			children = (
+				721054E418CC26EC0012C6C7 /* GNZNeatScrollViewController.h */,
+				721054E518CC26EC0012C6C7 /* GNZNeatScrollViewController.m */,
 				721054BB18CC027E0012C6C7 /* GNZAppDelegate.h */,
 				721054BC18CC027E0012C6C7 /* GNZAppDelegate.m */,
 				721054BE18CC027E0012C6C7 /* Main.storyboard */,
@@ -257,6 +262,7 @@
 			files = (
 				721054BD18CC027E0012C6C7 /* GNZAppDelegate.m in Sources */,
 				721054B918CC027E0012C6C7 /* main.m in Sources */,
+				721054E618CC26EC0012C6C7 /* GNZNeatScrollViewController.m in Sources */,
 				721054E318CC02D10012C6C7 /* GNZShakaTableViewController.m in Sources */,
 				721054C318CC027E0012C6C7 /* GNZViewController.m in Sources */,
 			);
