@@ -24,7 +24,6 @@
     self.tableView.dataSource = self;
     
     self.navigationItem.title = @"NeatView";
-    UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:nil];
     
     self.buttView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
     self.label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
@@ -111,11 +110,12 @@
                                                                          [UIFont fontWithName:@"Helvetica-Bold" size:16.0],
                                                                          NSFontAttributeName,
                                                                          nil]];
-//        for (UIView *subview in self.navigationController.navigationBar.subviews) subview.alpha = headerRemains/headerHeight;
 //
 //        self.profileTable.frame = CGRectMake(collectionViewFrame.origin.x, paddingTop-adjustedOffset/2, collectionViewFrame.size.width, screenFrame.size.height-paddingTop+adjustedOffset/2);
 //        
         self.label.transform = CGAffineTransformMakeScale(1-(offset+64)/2/44, 1-(offset+64)/2/44);
+        
+        self.label.alpha = headerRemains/navBarFrame.size.height;
 //
 //        CGRect imgContainerFrame = self.headerImageContainer.frame;
 //        imgContainerFrame.origin.y = offset/4;
@@ -125,7 +125,7 @@
         CGRect tempRect = CGRectMake(navBarFrame.origin.x, kStatusBarHeight-navBarFrame.size.height, navBarFrame.size.width, navBarFrame.size.height);
         self.navigationController.navigationBar.frame = tempRect;
 //        for (UIView *subview in self.navigationController.navigationBar.subviews) subview.alpha = 0;
-        self.navigationItem.titleView.alpha = 0;
+//        self.navigationItem.titleView.alpha = 0;
         [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                                          [[UIColor blackColor] colorWithAlphaComponent:0],
                                                                          NSForegroundColorAttributeName,
