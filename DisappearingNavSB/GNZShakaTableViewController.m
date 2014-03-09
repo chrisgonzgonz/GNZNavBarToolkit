@@ -11,8 +11,9 @@
 @interface GNZShakaTableViewController () <UIScrollViewDelegate,UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) CGFloat lastOffset;
-@property (strong, nonatomic) UIView *buttView;
+@property (strong, nonatomic) UIView *rightBarButtonContainer;
 @property (strong, nonatomic) UILabel *label;
+@property (strong, nonatomic) UIButton *rightBarButton;
 
 @end
 
@@ -25,14 +26,20 @@
     
     self.navigationItem.title = @"NeatView";
     
-    self.buttView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
-    self.label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
-    [self.buttView addSubview:self.label];
-    [self.label setCenter:CGPointMake(self.buttView.frame.size.width / 2, self.buttView.frame.size.height / 2)];
-    self.label.text =  @"\U0001F4CC";
-    UIBarButtonItem *custom = [[UIBarButtonItem alloc] initWithCustomView:self.buttView];
+    self.rightBarButtonContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
+    self.rightBarButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.rightBarButton.frame = CGRectMake(0, 0, 32, 32);
+    [self.rightBarButton setTitle:@"\U0001F4CC" forState:UIControlStateNormal];
+    
+    [self.rightBarButtonContainer addSubview:self.rightBarButton];
+    
+    UIBarButtonItem *custom = [[UIBarButtonItem alloc] initWithCustomView:self.rightBarButtonContainer];
     self.navigationItem.rightBarButtonItem = custom;
-    NSLog(@"Buttview Center: X%f, Y%f", self.buttView.center.x, self.buttView.center.y);
+    
+    self.label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
+    [self.label setCenter:CGPointMake(self.rightBarButtonContainer.frame.size.width / 2, self.rightBarButtonContainer.frame.size.height / 2)];
+    
+
 }
 
 #pragma mark - Table view data source
@@ -81,7 +88,7 @@
         CGRect tempRect = CGRectMake(navBarFrame.origin.x, kStatusBarHeight, navBarFrame.size.width, navBarFrame.size.height);
         self.navigationController.navigationBar.frame = tempRect;
 
-        self.label.alpha = 1;
+        self.rightBarButton.alpha = 1;
         
         [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                     [[UIColor blackColor] colorWithAlphaComponent:1],
@@ -93,12 +100,12 @@
 //
 //        self.profileTable.frame = CGRectMake(collectionViewFrame.origin.x, paddingTop, collectionViewFrame.size.width, screenFrame.size.height-paddingTop);
         
-        self.label.transform = CGAffineTransformMakeScale(1, 1);
+        self.rightBarButton.transform = CGAffineTransformMakeScale(1, 1);
 
-        NSLog(@"Original Label Container Frame Y: %f", self.buttView.frame.origin.y);
-        CGRect labelContainerFrame = self.label.frame;
-        labelContainerFrame.origin.y = 0;
-        self.label.frame = labelContainerFrame;
+        NSLog(@"Original Label Container Frame Y: %f", self.rightBarButtonContainer.frame.origin.y);
+        CGRect buttonContainerFrame = self.rightBarButton.frame;
+        buttonContainerFrame.origin.y = 0;
+        self.rightBarButton.frame = buttonContainerFrame;
         
     } else if (offset/2>-64 && offset<=-20) {
         CGRect tempRect = CGRectMake(navBarFrame.origin.x, -navBarFrame.size.height-offset, navBarFrame.size.width, navBarFrame.size.height);
@@ -113,14 +120,14 @@
 //
 //        self.profileTable.frame = CGRectMake(collectionViewFrame.origin.x, paddingTop-adjustedOffset/2, collectionViewFrame.size.width, screenFrame.size.height-paddingTop+adjustedOffset/2);
 //        
-        self.label.transform = CGAffineTransformMakeScale(1-(offset+64)/2/44, 1-(offset+64)/2/44);
+        self.rightBarButton.transform = CGAffineTransformMakeScale(1-(offset+64)/2/44, 1-(offset+64)/2/44);
         
-        self.label.alpha = headerRemains/navBarFrame.size.height;
+        self.rightBarButton.alpha = headerRemains/navBarFrame.size.height;
 //
-        CGRect labelContainerFrame = self.label.frame;
-        labelContainerFrame.origin.y = (offset+64)/2;
+        CGRect buttonContainerFrame = self.label.frame;
+        buttonContainerFrame.origin.y = (offset+64)/2;
 
-        self.label.frame = labelContainerFrame;
+        self.rightBarButton.frame = buttonContainerFrame;
         
     } else { // header completely gone
         CGRect tempRect = CGRectMake(navBarFrame.origin.x, kStatusBarHeight-navBarFrame.size.height, navBarFrame.size.width, navBarFrame.size.height);
@@ -135,7 +142,7 @@
 //
 //        self.profileTable.frame = CGRectMake(collectionViewFrame.origin.x, paddingTop-headerHeight, collectionViewFrame.size.width, screenFrame.size.height-paddingTop+headerHeight);
         
-        self.label.transform = CGAffineTransformMakeScale(0, 0);
+        self.rightBarButton.transform = CGAffineTransformMakeScale(0, 0);
         
 
 //        self.buttView.frame = CGRectMake(0, 0, self.buttView.frame.size.width, self.buttView.frame.size.height);
