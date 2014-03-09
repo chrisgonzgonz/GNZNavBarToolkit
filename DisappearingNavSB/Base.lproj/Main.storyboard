@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--Shaka Table View Controller - Root View Controller-->
+        <!--Shaka Table View Controller - Root View Controller Until the end of time-->
         <scene sceneID="Gna-PL-VLB">
             <objects>
                 <tableViewController id="vLZ-kO-tIg" customClass="GNZShakaTableViewController" sceneMemberID="viewController">
@@ -23,7 +23,7 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="Fao-hY-hvE"/>
+                    <navigationItem key="navigationItem" title="Root View Controller Until the end of time" id="Fao-hY-hvE"/>
                     <connections>
                         <outlet property="tableView" destination="jk9-c9-DEb" id="bcO-bH-evQ"/>
                     </connections>
@@ -38,6 +38,9 @@
                 <navigationController definesPresentationContext="YES" id="hUj-jj-NWD" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JQA-av-J2d">
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="0.0"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="vLZ-kO-tIg" kind="relationship" relationship="rootViewController" id="YCP-o8-yfO"/>
