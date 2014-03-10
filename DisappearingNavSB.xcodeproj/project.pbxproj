@@ -22,6 +22,7 @@
 		721054D818CC027E0012C6C7 /* DisappearingNavSBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 721054D718CC027E0012C6C7 /* DisappearingNavSBTests.m */; };
 		721054E318CC02D10012C6C7 /* GNZDemoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 721054E218CC02D10012C6C7 /* GNZDemoTableViewController.m */; };
 		721054E618CC26EC0012C6C7 /* GNZNavBarToolkit.m in Sources */ = {isa = PBXBuildFile; fileRef = 721054E518CC26EC0012C6C7 /* GNZNavBarToolkit.m */; };
+		725C8FA618CE0265004081D7 /* GNZPushedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 725C8FA518CE0265004081D7 /* GNZPushedViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		721054E218CC02D10012C6C7 /* GNZDemoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNZDemoTableViewController.m; sourceTree = "<group>"; };
 		721054E418CC26EC0012C6C7 /* GNZNavBarToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNZNavBarToolkit.h; sourceTree = "<group>"; };
 		721054E518CC26EC0012C6C7 /* GNZNavBarToolkit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNZNavBarToolkit.m; sourceTree = "<group>"; };
+		725C8FA418CE0265004081D7 /* GNZPushedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNZPushedViewController.h; sourceTree = "<group>"; };
+		725C8FA518CE0265004081D7 /* GNZPushedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNZPushedViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +163,8 @@
 			children = (
 				721054E118CC02D10012C6C7 /* GNZDemoTableViewController.h */,
 				721054E218CC02D10012C6C7 /* GNZDemoTableViewController.m */,
+				725C8FA418CE0265004081D7 /* GNZPushedViewController.h */,
+				725C8FA518CE0265004081D7 /* GNZPushedViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -275,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				721054BD18CC027E0012C6C7 /* GNZAppDelegate.m in Sources */,
+				725C8FA618CE0265004081D7 /* GNZPushedViewController.m in Sources */,
 				721054B918CC027E0012C6C7 /* main.m in Sources */,
 				721054E618CC26EC0012C6C7 /* GNZNavBarToolkit.m in Sources */,
 				721054E318CC02D10012C6C7 /* GNZDemoTableViewController.m in Sources */,
@@ -492,6 +498,7 @@
 				721054DD18CC027E0012C6C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		721054DE18CC027E0012C6C7 /* Build configuration list for PBXNativeTarget "DisappearingNavSBTests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +507,7 @@
 				721054E018CC027E0012C6C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
