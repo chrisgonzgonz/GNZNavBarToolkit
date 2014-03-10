@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--Demo Table View Controller - Root View Controller Until the end of time-->
+        <!--Demo Table View Controller - Root View Controller-->
         <scene sceneID="Gna-PL-VLB">
             <objects>
                 <tableViewController id="vLZ-kO-tIg" customClass="GNZDemoTableViewController" sceneMemberID="viewController">
@@ -26,7 +26,7 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller Until the end of time" id="Fao-hY-hvE"/>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="Fao-hY-hvE"/>
                     <connections>
                         <outlet property="tableView" destination="jk9-c9-DEb" id="bcO-bH-evQ"/>
                     </connections>
