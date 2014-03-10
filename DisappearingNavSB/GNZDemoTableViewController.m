@@ -12,17 +12,11 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
-@property (strong, nonatomic) UIView *rightBarButtonContainer;
 @property (strong, nonatomic) UIButton *rightBarButton;
-
-@property (strong, nonatomic) UIView *barTitleContainer;
 @property (strong, nonatomic) UILabel *barTitleLabel;
-
-@property (strong, nonatomic) UIView *leftBarButtonContainer;
 @property (strong, nonatomic) UIButton *leftBarButton;
 
 @property (strong, nonatomic) NSArray *buttonList;
-@property (strong, nonatomic) NSArray *containerList;
 
 @end
 
@@ -35,44 +29,41 @@
     self.tableView.dataSource = self;
     
 //Right Bar Button
-    self.rightBarButtonContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
+    UIView *rightBarButtonContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0, 0, 32, 32);
     [button setTitle:@"\U0001F4CC" forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     self.rightBarButton = button;
-    [self.rightBarButtonContainer addSubview:self.rightBarButton];
+    [rightBarButtonContainer addSubview:self.rightBarButton];
     
-    UIBarButtonItem *rightButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightBarButtonContainer];
+    UIBarButtonItem *rightButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBarButtonContainer];
     self.navigationItem.rightBarButtonItem = rightButtonItem;
     
 //Title Label
-    self.barTitleContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 32)];
+    UIView *barTitleContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 32)];
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 32)];
     [titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:18]];
     [titleLabel setBackgroundColor:[UIColor clearColor]];
-    [titleLabel setTextColor:[UIColor blackColor]];
     [titleLabel setText:@"Title"];
     [titleLabel setTextAlignment:NSTextAlignmentCenter];
     self.barTitleLabel = titleLabel;
-    [self.barTitleContainer addSubview: self.barTitleLabel];
-    self.navigationItem.titleView = self.barTitleContainer;
+    [barTitleContainer addSubview: self.barTitleLabel];
+    self.navigationItem.titleView = barTitleContainer;
     
 //Left Bar Button
-    self.leftBarButtonContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
+    UIView *leftBarButtonContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
     button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0, 0, 32, 32);
     [button setTitle:@"\u2705" forState:UIControlStateNormal];
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     self.leftBarButton = button;
-    [self.leftBarButtonContainer addSubview:self.leftBarButton];
+    [leftBarButtonContainer addSubview:self.leftBarButton];
     
-    UIBarButtonItem *leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.leftBarButtonContainer];
+    UIBarButtonItem *leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBarButtonContainer];
     self.navigationItem.leftBarButtonItem = leftButtonItem;
     
 //Collect Views for bulk adjustments
     self.buttonList = @[self.rightBarButton, self.barTitleLabel, self.leftBarButton];
-    self.containerList = @[self.rightBarButtonContainer, self.barTitleContainer, self.leftBarButtonContainer];
 }
 
 #pragma mark - Table view data source
