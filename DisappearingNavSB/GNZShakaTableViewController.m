@@ -22,6 +22,7 @@
 @end
 
 @implementation GNZShakaTableViewController
+
 -(void)viewDidLoad
 {
     [super viewDidLoad];
@@ -89,46 +90,32 @@
     return cell;
 }
 
-# define kStatusBarHeight 20
+#pragma mark - Scroll view delegate
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    static const CGFloat StatusBarHeight = 20.0;
     
     CGFloat offset = scrollView.contentOffset.y;
     CGRect navBarFrame = self.navigationController.navigationBar.frame;
     
     NSLog(@"ContentOffset: %f, NavbarFrameOrigin: %f",offset,navBarFrame.origin.y);
     
-    CGFloat headerRemains = navBarFrame.origin.y + navBarFrame.size.height - kStatusBarHeight;
-//    CGFloat paddingTop = kStatusBarHeight+headerHeight;
+    CGFloat headerRemains = navBarFrame.origin.y + navBarFrame.size.height - StatusBarHeight;
     
     if (offset<=-64) { // everything back to normal
         
-        CGRect tempRect = CGRectMake(navBarFrame.origin.x, kStatusBarHeight, navBarFrame.size.width, navBarFrame.size.height);
+        CGRect tempRect = CGRectMake(navBarFrame.origin.x, StatusBarHeight, navBarFrame.size.width, navBarFrame.size.height);
         self.navigationController.navigationBar.frame = tempRect;
 
         for (UIView *view in self.buttonList) {
             view.alpha = 1;
         }
-//        self.rightBarButton.alpha = 1;
-        
-//        [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-//                                                    [[UIColor blackColor] colorWithAlphaComponent:1],
-//                                                    NSForegroundColorAttributeName,
-//                                                    [UIFont fontWithName:@"Helvetica-Bold" size:16.0],
-//                                                    NSFontAttributeName,
-//                                                    nil]];
-//        for (UIView *view in self.buttonList) {
-//            view.transform = CGAffineTransformMakeScale(1, 1);
-//        }
+
         self.leftBarButton.transform = CGAffineTransformMakeScale(1, 1);
         self.rightBarButton.transform = CGAffineTransformMakeScale(1, 1);
         self.barTitleLabel.transform = CGAffineTransformMakeScale(1, 1);
 
-//        for (UIView *view in self.containerList) {
-//            CGRect buttonContainerFrame = view.frame;
-//            buttonContainerFrame.origin.y = 0;
-//            view.frame = buttonContainerFrame;
-//        }
  
         CGRect buttonContainerFrame = self.rightBarButton.frame;
         buttonContainerFrame.origin.y = 0;
@@ -145,13 +132,7 @@
     } else if (offset/2>-64 && offset<=-20) {
         CGRect tempRect = CGRectMake(navBarFrame.origin.x, -navBarFrame.size.height-offset, navBarFrame.size.width, navBarFrame.size.height);
         self.navigationController.navigationBar.frame = tempRect;
-        
-//        [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-//                                                                         [[UIColor blackColor] colorWithAlphaComponent:headerRemains/navBarFrame.size.height],
-//                                                                         NSForegroundColorAttributeName,
-//                                                                         [UIFont fontWithName:@"Helvetica-Bold" size:16.0],
-//                                                                         NSFontAttributeName,
-//                                                                         nil]];
+
         for (UIView *view in self.buttonList) {
             view.alpha = headerRemains/navBarFrame.size.height;;
         }
@@ -159,16 +140,6 @@
         for (UIView *view in self.buttonList) {
             view.transform = CGAffineTransformMakeScale(1-(offset+64)/2/44, 1-(offset+64)/2/44);
         }
-        
-//        self.rightBarButton.transform = CGAffineTransformMakeScale(1-(offset+64)/2/44, 1-(offset+64)/2/44);
-
-//        self.rightBarButton.alpha = headerRemains/navBarFrame.size.height;
-
-//        for (UIView *view in self.containerList) {
-//            CGRect buttonContainerFrame = view.frame;
-//            buttonContainerFrame.origin.y = (offset+64)/2;
-//            view.frame = buttonContainerFrame;
-//        }
         
         CGRect buttonContainerFrame = self.rightBarButton.frame;
         buttonContainerFrame.origin.y = (offset+64)/2;
@@ -183,29 +154,13 @@
         self.barTitleLabel.frame = buttonContainerFrame;
         
     } else { // header completely gone
-        CGRect tempRect = CGRectMake(navBarFrame.origin.x, kStatusBarHeight-navBarFrame.size.height, navBarFrame.size.width, navBarFrame.size.height);
+        CGRect tempRect = CGRectMake(navBarFrame.origin.x, StatusBarHeight-navBarFrame.size.height, navBarFrame.size.width, navBarFrame.size.height);
         self.navigationController.navigationBar.frame = tempRect;
-
-//        [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-//                                                                         [[UIColor blackColor] colorWithAlphaComponent:0],
-//                                                                         NSForegroundColorAttributeName,
-//                                                                         [UIFont fontWithName:@"Helvetica-Bold" size:16.0],
-//                                                                         NSFontAttributeName,
-//                                                                         nil]];
-//
-//        self.profileTable.frame = CGRectMake(collectionViewFrame.origin.x, paddingTop-headerHeight, collectionViewFrame.size.width, screenFrame.size.height-paddingTop+headerHeight);
-//        for (UIView *view in self.buttonList) {
-//            view.transform = CGAffineTransformMakeScale(0, 0);
-//        }
-
         
         self.rightBarButton.transform = CGAffineTransformMakeScale(0, 0);
         self.leftBarButton.transform = CGAffineTransformMakeScale(0, 0);
         self.barTitleLabel.transform = CGAffineTransformMakeScale(0, 0);
-        
 
-//        self.buttView.frame = CGRectMake(0, 0, self.buttView.frame.size.width, self.buttView.frame.size.height);
-        
     }
 }
 
