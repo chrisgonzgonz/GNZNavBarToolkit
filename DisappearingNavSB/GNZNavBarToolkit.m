@@ -16,18 +16,21 @@
 
 static const CGFloat StatusBarHeight = 20.0;
 
+//  allows for scroll resize/change messages on return/initialization
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     self.transitioning = NO;
 }
 
+//  stops scroll resize/change messages in preparation for a new view
 -(void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
     self.transitioning = YES;
 }
 
-# define kStatusBarHeight 20
+//  receives scrollview event and adjusts labels/buttons accordingly
 -(void)neatScroll:(UIScrollView *)scrollView
 {
     CGFloat offset = scrollView.contentOffset.y;
