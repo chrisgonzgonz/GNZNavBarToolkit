@@ -42,7 +42,6 @@
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     self.rightBarButton = button;
     [self.rightBarButtonContainer addSubview:self.rightBarButton];
-    
     UIBarButtonItem *rightButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightBarButtonContainer];
     self.navigationItem.rightBarButtonItem = rightButtonItem;
     

@@ -17,91 +17,74 @@
 # define kStatusBarHeight 20
 -(void)neatScroll:(UIScrollView *)scrollView
 {
-
-    // this should not be here lulz
-    //    AUAuraTitleCell *titleCell = [self.profileTable dequeueReusableCellWithIdentifier:@"auraHeaderCell"];
-    //
-    //    CGRect collectionViewFrame = self.profileTable.frame;
-    //    CGRect subheaderFrame = titleCell.frame;
-    //    CGRect headerFrame = self.headerBar.frame;
-    //    CGRect screenFrame = self.view.frame;
-    //
-    //    CGFloat headerHeight = headerFrame.size.height;
-    //    CGFloat subHeaderHeight = subheaderFrame.size.height;
+    static const CGFloat StatusBarHeight = 20.0;
+    
     CGFloat offset = scrollView.contentOffset.y;
     CGRect navBarFrame = self.navigationController.navigationBar.frame;
-    CGFloat adjustedOffset = offset;
+    CGFloat headerRemains = navBarFrame.origin.y + navBarFrame.size.height - StatusBarHeight;
+    CGFloat lowerBounds = -CGRectGetHeight(navBarFrame)-StatusBarHeight;
+    CGFloat upperBounds = -StatusBarHeight;
     
-    NSLog(@"ContentOffset: %f, NavbarFrameHeight: %f",offset,navBarFrame.origin.y);
+    NSLog(@"ContentOffset: %f, NavbarFrameOrigin: %f",offset,navBarFrame.origin.y);
     
-    CGFloat headerRemains = navBarFrame.origin.y + navBarFrame.size.height - kStatusBarHeight;
-    //    CGFloat paddingTop = kStatusBarHeight+headerHeight;
     
-    if (adjustedOffset<=-64) { // everything back to normal
+    if (offset<=lowerBounds) { // everything back to normal
         
-        CGRect tempRect = CGRectMake(navBarFrame.origin.x, kStatusBarHeight, navBarFrame.size.width, navBarFrame.size.height);
-        self.navigationController.navigationBar.frame = tempRect;
-        //        for (UIView *subview in self.navigationController.navigationBar.subviews) subview.alpha = 1;
-        [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                                         [[UIColor blackColor] colorWithAlphaComponent:1],
-                                                                         NSForegroundColorAttributeName,
-                                                                         [UIFont fontWithName:@"Helvetica-Bold" size:16.0],
-                                                                         NSFontAttributeName,
-                                                                         nil]];
+        //        Change navbar appearance; navbar is back to original size
+        CGRect newNavFrame = CGRectMake(CGRectGetMinX(navBarFrame), StatusBarHeight, CGRectGetWidth(navBarFrame), CGRectGetHeight(navBarFrame));
+        self.navigationController.navigationBar.frame = newNavFrame;
         
-        NSLog(@"Bar Tint: %@", [[self.navigationController.navigationBar barTintColor] description]);
-        //
-        //        self.profileTable.frame = CGRectMake(collectionViewFrame.origin.x, paddingTop, collectionViewFrame.size.width, screenFrame.size.height-paddingTop);
-        //
-        //        self.headerImage.transform = CGAffineTransformMakeScale(1, 1);
-        //
-        //        CGRect imgContainerFrame = self.headerImageContainer.frame;
-        //        imgContainerFrame.origin.y = 0;
-        //        self.headerImageContainer.frame = imgContainerFrame;
+        //        Change alpha on button items/title
+        for (UIView *view in self.buttonList) {
+            view.alpha = 1;
+        }
         
-    } else if (offset/2>-64 && offset<=-20) {
-        CGRect tempRect = CGRectMake(navBarFrame.origin.x, -navBarFrame.size.height-adjustedOffset, navBarFrame.size.width, navBarFrame.size.height);
-        self.navigationController.navigationBar.frame = tempRect;
+        //        Transform to shrink/enlarge button items/title
+        for (UIView *view in self.buttonList) {
+            view.transform = CGAffineTransformMakeScale(1, 1);
+        }
         
-        [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                                         [[UIColor blackColor] colorWithAlphaComponent:headerRemains/navBarFrame.size.height],
-                                                                         NSForegroundColorAttributeName,
-                                                                         [UIFont fontWithName:@"Helvetica-Bold" size:16.0],
-                                                                         NSFontAttributeName,
-                                                                         nil]];
-        //        for (UIView *subview in self.navigationController.navigationBar.subviews) subview.alpha = headerRemains/headerHeight;
-        //
-        //        self.profileTable.frame = CGRectMake(collectionViewFrame.origin.x, paddingTop-adjustedOffset/2, collectionViewFrame.size.width, screenFrame.size.height-paddingTop+adjustedOffset/2);
-        //
-        //        self.headerImage.transform = CGAffineTransformMakeScale(1-offset/2/headerFrame.size.height, 1- offset/2/headerFrame.size.height);
-        //
-        //        CGRect imgContainerFrame = self.headerImageContainer.frame;
-        //        imgContainerFrame.origin.y = offset/4;
-        //        self.headerImageContainer.frame = imgContainerFrame;
+        //       Reposition shrinking buttons to allow for background fade effect
+        for (UIView *view in self.buttonList) {
+            CGRect buttonOrTitleFrame = view.frame;
+            buttonOrTitleFrame.origin.y = 0;
+            view.frame = buttonOrTitleFrame;
+        }
+        
+    } else if (offset/2>lowerBounds && offset<=upperBounds) {
+        //        Change navbar appearance
+        CGRect newNavFrame = CGRectMake(CGRectGetMinX(navBarFrame), -CGRectGetHeight(navBarFrame)-offset, CGRectGetWidth(navBarFrame), CGRectGetHeight(navBarFrame));
+        self.navigationController.navigationBar.frame = newNavFrame;
+        
+        //        Change alpha on button items/title
+        for (UIView *view in self.buttonList) {
+            view.alpha = headerRemains/navBarFrame.size.height;;
+        }
+        
+        //        Transform to shrink/enlarge button items/title
+        for (UIView *view in self.buttonList) {
+            view.transform = CGAffineTransformMakeScale(1-(offset+64)/2/44, 1-(offset+64)/2/44);
+        }
+        
+        
+        //        Reposition shrinking buttons/title to allow for background fade effect
+        for (UIView *view in self.buttonList) {
+            CGRect buttonOrTitleFrame = view.frame;
+            buttonOrTitleFrame.origin.y = (offset+64)/2;
+            view.frame = buttonOrTitleFrame;
+        }
         
     } else { // header completely gone
-        CGRect tempRect = CGRectMake(navBarFrame.origin.x, kStatusBarHeight-navBarFrame.size.height, navBarFrame.size.width, navBarFrame.size.height);
-        self.navigationController.navigationBar.frame = tempRect;
-        //        for (UIView *subview in self.navigationController.navigationBar.subviews) subview.alpha = 0;
-        self.navigationItem.titleView.alpha = 0;
-        [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                                         [[UIColor blackColor] colorWithAlphaComponent:0],
-                                                                         NSForegroundColorAttributeName,
-                                                                         [UIFont fontWithName:@"Helvetica-Bold" size:16.0],
-                                                                         NSFontAttributeName,
-                                                                         nil]];
-        //
-        //        self.profileTable.frame = CGRectMake(collectionViewFrame.origin.x, paddingTop-headerHeight, collectionViewFrame.size.width, screenFrame.size.height-paddingTop+headerHeight);
-        //        self.headerImage.transform = CGAffineTransformMakeScale(0, 0);
+        //        Change navbar appearance; navbar appears to be behind status bar now
+        CGRect newNavFrame = CGRectMake(CGRectGetMinX(navBarFrame), StatusBarHeight- CGRectGetHeight(navBarFrame), CGRectGetWidth(navBarFrame), CGRectGetHeight(navBarFrame));
+        self.navigationController.navigationBar.frame = newNavFrame;
+        
+        //        Transform to shrink button items
+        for (UIView *view in self.buttonList) {
+            view.transform = CGAffineTransformMakeScale(0, 0);
+        }
+        
     }
-    
-    // "if nothing pinches the purple thing, don't do shit" - MJones
-    //    if (headerFrame.origin.y >= kStatusBarHeight) { // hardcoding again lol
-    //        self.headerImage.transform = CGAffineTransformMakeScale(1, 1);
-    //        CGRect imgContainerFrame = self.headerImageContainer.frame;
-    //        imgContainerFrame.origin.y = 0;
-    //        self.headerImageContainer.frame = imgContainerFrame;
-    //    }
 
 }
 
