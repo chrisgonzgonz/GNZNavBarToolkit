@@ -10,4 +10,6 @@
 
 @interface GNZNavBarToolkit : UIViewController
 -(void)neatScroll:(UIScrollView *)scrollView;
+@property (nonatomic) BOOL transitioning;
+@property (strong, nonatomic) NSArray *targetNavBarItems;
 @end
