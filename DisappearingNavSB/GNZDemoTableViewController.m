@@ -121,12 +121,12 @@
         self.navigationController.navigationBar.frame = newNavFrame;
 
 //        Change alpha on button items/title
-        for (UIView *view in self.buttonList) {
+        for (UIView *view in self.targetNavBarItems) {
             view.alpha = headerRemains/navBarFrame.size.height;;
         }
 
 //        Transform to shrink/enlarge button items/title
-        for (UIView *view in self.buttonList) {
+        for (UIView *view in self.targetNavBarItems) {
             view.transform = CGAffineTransformMakeScale(1-(offset+64)/2/44, 1-(offset+64)/2/44);
         }
         
