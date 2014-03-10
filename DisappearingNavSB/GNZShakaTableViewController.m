@@ -43,14 +43,15 @@
 //Title Label
     self.barTitleContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 32)];
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 32)];
-    [titleLabel setCenter:CGPointMake(self.rightBarButtonContainer.frame.size.width / 2, self.rightBarButtonContainer.frame.size.height / 2)];
+//    [titleLabel setCenter:CGPointMake(self.rightBarButtonContainer.frame.size.width / 2, self.rightBarButtonContainer.frame.size.height / 2)];
     [titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:18]];
     [titleLabel setBackgroundColor:[UIColor clearColor]];
     [titleLabel setTextColor:[UIColor blackColor]];
-    [titleLabel setText:@"TitleTitleTitleTitleTitleTitleTitleTitleTitle"];
+    [titleLabel setText:@"Title"];
     [titleLabel setTextAlignment:NSTextAlignmentCenter];
     self.barTitleLabel = titleLabel;
-    self.navigationItem.titleView = self.barTitleLabel;
+    [self.barTitleContainer addSubview: self.barTitleLabel];
+    self.navigationItem.titleView = self.barTitleContainer;
     
 //Left Bar Button
     self.leftBarButtonContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
@@ -116,21 +117,30 @@
 //                                                    [UIFont fontWithName:@"Helvetica-Bold" size:16.0],
 //                                                    NSFontAttributeName,
 //                                                    nil]];
-        for (UIView *view in self.buttonList) {
-            view.transform = CGAffineTransformMakeScale(1, 1);
-        }
-        
-//        self.rightBarButton.transform = CGAffineTransformMakeScale(1, 1);
+//        for (UIView *view in self.buttonList) {
+//            view.transform = CGAffineTransformMakeScale(1, 1);
+//        }
+        self.leftBarButton.transform = CGAffineTransformMakeScale(1, 1);
+        self.rightBarButton.transform = CGAffineTransformMakeScale(1, 1);
+        self.barTitleLabel.transform = CGAffineTransformMakeScale(1, 1);
 
-        for (UIView *view in self.containerList) {
-            CGRect buttonContainerFrame = view.frame;
-            buttonContainerFrame.origin.y = 0;
-            view.frame = buttonContainerFrame;
-        }
+//        for (UIView *view in self.containerList) {
+//            CGRect buttonContainerFrame = view.frame;
+//            buttonContainerFrame.origin.y = 0;
+//            view.frame = buttonContainerFrame;
+//        }
  
-//        CGRect buttonContainerFrame = self.rightBarButton.frame;
-//        buttonContainerFrame.origin.y = 0;
-//        self.rightBarButton.frame = buttonContainerFrame;
+        CGRect buttonContainerFrame = self.rightBarButton.frame;
+        buttonContainerFrame.origin.y = 0;
+        self.rightBarButton.frame = buttonContainerFrame;
+        
+        buttonContainerFrame = self.leftBarButton.frame;
+        buttonContainerFrame.origin.y = 0;
+        self.leftBarButton.frame = buttonContainerFrame;
+        
+        buttonContainerFrame = self.barTitleLabel.frame;
+        buttonContainerFrame.origin.y = 0;
+        self.barTitleLabel.frame = buttonContainerFrame;
         
     } else if (offset/2>-64 && offset<=-20) {
         CGRect tempRect = CGRectMake(navBarFrame.origin.x, -navBarFrame.size.height-offset, navBarFrame.size.width, navBarFrame.size.height);
@@ -154,15 +164,23 @@
 
 //        self.rightBarButton.alpha = headerRemains/navBarFrame.size.height;
 
-        for (UIView *view in self.containerList) {
-            CGRect buttonContainerFrame = view.frame;
-            buttonContainerFrame.origin.y = (offset+64)/2;
-            view.frame = buttonContainerFrame;
-        }
+//        for (UIView *view in self.containerList) {
+//            CGRect buttonContainerFrame = view.frame;
+//            buttonContainerFrame.origin.y = (offset+64)/2;
+//            view.frame = buttonContainerFrame;
+//        }
         
-//        CGRect buttonContainerFrame = self.rightBarButton.frame;
-//        buttonContainerFrame.origin.y = (offset+64)/2;
-//        self.rightBarButton.frame = buttonContainerFrame;
+        CGRect buttonContainerFrame = self.rightBarButton.frame;
+        buttonContainerFrame.origin.y = (offset+64)/2;
+        self.rightBarButton.frame = buttonContainerFrame;
+        
+        buttonContainerFrame = self.leftBarButton.frame;
+        buttonContainerFrame.origin.y = (offset+64)/2;
+        self.leftBarButton.frame = buttonContainerFrame;
+        
+        buttonContainerFrame = self.barTitleLabel.frame;
+        buttonContainerFrame.origin.y = (offset+64)/2;
+        self.barTitleLabel.frame = buttonContainerFrame;
         
     } else { // header completely gone
         CGRect tempRect = CGRectMake(navBarFrame.origin.x, kStatusBarHeight-navBarFrame.size.height, navBarFrame.size.width, navBarFrame.size.height);
@@ -176,11 +194,13 @@
 //                                                                         nil]];
 //
 //        self.profileTable.frame = CGRectMake(collectionViewFrame.origin.x, paddingTop-headerHeight, collectionViewFrame.size.width, screenFrame.size.height-paddingTop+headerHeight);
-        for (UIView *view in self.buttonList) {
-            view.transform = CGAffineTransformMakeScale(0, 0);
-        }
+//        for (UIView *view in self.buttonList) {
+//            view.transform = CGAffineTransformMakeScale(0, 0);
+//        }
         
-//        self.rightBarButton.transform = CGAffineTransformMakeScale(0, 0);
+        self.rightBarButton.transform = CGAffineTransformMakeScale(0, 0);
+        self.leftBarButton.transform = CGAffineTransformMakeScale(0, 0);
+        self.barTitleLabel.transform = CGAffineTransformMakeScale(0, 0);
         
 
 //        self.buttView.frame = CGRectMake(0, 0, self.buttView.frame.size.width, self.buttView.frame.size.height);
