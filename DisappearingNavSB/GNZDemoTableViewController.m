@@ -12,11 +12,7 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
-@property (strong, nonatomic) UIButton *rightBarButton;
-@property (strong, nonatomic) UILabel *barTitleLabel;
-@property (strong, nonatomic) UIButton *leftBarButton;
-
-@property (strong, nonatomic) NSArray *buttonList;
+@property (strong, nonatomic) NSArray *targetNavBarItems;
 
 @end
 
@@ -30,11 +26,10 @@
     
 //Right Bar Button
     UIView *rightBarButtonContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(0, 0, 32, 32);
-    [button setTitle:@"\U0001F4CC" forState:UIControlStateNormal];
-    self.rightBarButton = button;
-    [rightBarButtonContainer addSubview:self.rightBarButton];
+    UIButton *rightBarButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    rightBarButton.frame = CGRectMake(0, 0, 32, 32);
+    [rightBarButton setTitle:@"\U0001F4CC" forState:UIControlStateNormal];
+    [rightBarButtonContainer addSubview:rightBarButton];
     
     UIBarButtonItem *rightButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBarButtonContainer];
     self.navigationItem.rightBarButtonItem = rightButtonItem;
@@ -46,24 +41,21 @@
     [titleLabel setBackgroundColor:[UIColor clearColor]];
     [titleLabel setText:@"Title"];
     [titleLabel setTextAlignment:NSTextAlignmentCenter];
-    self.barTitleLabel = titleLabel;
-    [barTitleContainer addSubview: self.barTitleLabel];
+    [barTitleContainer addSubview: titleLabel];
     self.navigationItem.titleView = barTitleContainer;
     
 //Left Bar Button
     UIView *leftBarButtonContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
-    button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(0, 0, 32, 32);
-    [button setTitle:@"\u2705" forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    self.leftBarButton = button;
-    [leftBarButtonContainer addSubview:self.leftBarButton];
+    UIButton *leftBarButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    leftBarButton.frame = CGRectMake(0, 0, 32, 32);
+    [leftBarButton setTitle:@"\u2705" forState:UIControlStateNormal];
+    [leftBarButtonContainer addSubview:leftBarButton];
     
     UIBarButtonItem *leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBarButtonContainer];
     self.navigationItem.leftBarButtonItem = leftButtonItem;
     
 //Collect Views for bulk adjustments
-    self.buttonList = @[self.rightBarButton, self.barTitleLabel, self.leftBarButton];
+    self.targetNavBarItems = @[rightBarButton, titleLabel, leftBarButton];
 }
 
 #pragma mark - Table view data source
@@ -107,17 +99,17 @@
         self.navigationController.navigationBar.frame = newNavFrame;
 
 //        Change alpha on button items/title
-        for (UIView *view in self.buttonList) {
+        for (UIView *view in self.targetNavBarItems) {
             view.alpha = 1;
         }
 
 //        Transform to shrink/enlarge button items/title
-        for (UIView *view in self.buttonList) {
+        for (UIView *view in self.targetNavBarItems) {
             view.transform = CGAffineTransformMakeScale(1, 1);
         }
         
  //       Reposition shrinking buttons to allow for background fade effect
-        for (UIView *view in self.buttonList) {
+        for (UIView *view in self.targetNavBarItems) {
             CGRect buttonOrTitleFrame = view.frame;
             buttonOrTitleFrame.origin.y = 0;
             view.frame = buttonOrTitleFrame;
@@ -140,7 +132,7 @@
         
 
 //        Reposition shrinking buttons/title to allow for background fade effect
-        for (UIView *view in self.buttonList) {
+        for (UIView *view in self.targetNavBarItems) {
             CGRect buttonOrTitleFrame = view.frame;
             buttonOrTitleFrame.origin.y = (offset+64)/2;
             view.frame = buttonOrTitleFrame;
@@ -152,7 +144,7 @@
         self.navigationController.navigationBar.frame = newNavFrame;
         
 //        Transform to shrink button items
-        for (UIView *view in self.buttonList) {
+        for (UIView *view in self.targetNavBarItems) {
             view.transform = CGAffineTransformMakeScale(0, 0);
         }
 
