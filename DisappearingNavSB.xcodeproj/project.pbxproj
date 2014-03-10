@@ -210,6 +210,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = GNZ;
 				TargetAttributes = {
+					721054A818CC027E0012C6C7 = {
+						DevelopmentTeam = YW6Y8PE8VZ;
+					};
 					721054C918CC027E0012C6C7 = {
 						TestTargetID = 721054A818CC027E0012C6C7;
 					};
@@ -391,10 +394,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DisappearingNavSB/DisappearingNavSB-Prefix.pch";
 				INFOPLIST_FILE = "DisappearingNavSB/DisappearingNavSB-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -404,10 +410,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DisappearingNavSB/DisappearingNavSB-Prefix.pch";
 				INFOPLIST_FILE = "DisappearingNavSB/DisappearingNavSB-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

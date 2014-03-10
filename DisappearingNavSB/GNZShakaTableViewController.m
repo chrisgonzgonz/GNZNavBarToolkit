@@ -197,6 +197,7 @@
 //        for (UIView *view in self.buttonList) {
 //            view.transform = CGAffineTransformMakeScale(0, 0);
 //        }
+
         
         self.rightBarButton.transform = CGAffineTransformMakeScale(0, 0);
         self.leftBarButton.transform = CGAffineTransformMakeScale(0, 0);
@@ -206,29 +207,8 @@
 //        self.buttView.frame = CGRectMake(0, 0, self.buttView.frame.size.width, self.buttView.frame.size.height);
         
     }
-    
-    // "if nothing pinches the purple thing, don't do shit" - MJones
-//    if (headerFrame.origin.y >= kStatusBarHeight) { // hardcoding again lol
-//        self.headerImage.transform = CGAffineTransformMakeScale(1, 1);
-//        CGRect imgContainerFrame = self.headerImageContainer.frame;
-//        imgContainerFrame.origin.y = 0;
-//        self.headerImageContainer.frame = imgContainerFrame;
-//    }
-    
 }
 
-//-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-//{
-//    self.lastOffset = scrollView.contentOffset.y;
-//    NSLog(@"Last decelerating for scroll: %f", self.lastOffset);
-//}
-//
-//-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-//    if (decelerate) {
-//        self.lastOffset = scrollView.contentOffset.y;
-//        NSLog(@"Last offset for scroll: %f", self.lastOffset);
-//    }
-//}
 
 //-(void)scrollViewDidScroll:(UIScrollView *)scrollView
 //{
