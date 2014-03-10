@@ -21,10 +21,23 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    
+//  Set delegates
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-//Right Bar Button
+    UIButton *rightButton = [self setUpRightNavButton];
+    UIButton *leftButton = [self setUpLeftNavButton];
+    UILabel *titleLabel = [self setUpNavTitleLabel];
+    
+    self.targetNavBarItems = @[rightButton, leftButton, titleLabel];
+}
+
+#pragma mark - Set up buttons and their containers programmatically
+
+-(UIButton *)setUpRightNavButton
+{
     UIView *rightBarButtonContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
     UIButton *rightBarButton = [UIButton buttonWithType:UIButtonTypeCustom];
     rightBarButton.frame = CGRectMake(0, 0, 32, 32);
@@ -34,17 +47,11 @@
     UIBarButtonItem *rightButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBarButtonContainer];
     self.navigationItem.rightBarButtonItem = rightButtonItem;
     
-//Title Label
-    UIView *barTitleContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 32)];
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 32)];
-    [titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:18]];
-    [titleLabel setBackgroundColor:[UIColor clearColor]];
-    [titleLabel setText:@"Title"];
-    [titleLabel setTextAlignment:NSTextAlignmentCenter];
-    [barTitleContainer addSubview: titleLabel];
-    self.navigationItem.titleView = barTitleContainer;
-    
-//Left Bar Button
+    return rightBarButton;
+}
+
+-(UIButton *)setUpLeftNavButton
+{
     UIView *leftBarButtonContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
     UIButton *leftBarButton = [UIButton buttonWithType:UIButtonTypeCustom];
     leftBarButton.frame = CGRectMake(0, 0, 32, 32);
@@ -54,8 +61,22 @@
     UIBarButtonItem *leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBarButtonContainer];
     self.navigationItem.leftBarButtonItem = leftButtonItem;
     
-//Collect Views for bulk adjustments
-    self.targetNavBarItems = @[rightBarButton, titleLabel, leftBarButton];
+    return leftBarButton;
+}
+
+-(UILabel *)setUpNavTitleLabel
+{
+    UIView *barTitleContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 32)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 32)];
+    [titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:18]];
+    [titleLabel setBackgroundColor:[UIColor clearColor]];
+    [titleLabel setText:@"Title"];
+    [titleLabel setTextAlignment:NSTextAlignmentCenter];
+    [barTitleContainer addSubview: titleLabel];
+    
+    self.navigationItem.titleView = barTitleContainer;
+    
+    return titleLabel;
 }
 
 #pragma mark - Table view data source
