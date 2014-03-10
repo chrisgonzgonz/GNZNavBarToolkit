@@ -1,5 +1,5 @@
 //
-//  GNZNeatScrollViewController.h
+//  GNZShakaTableViewController.h
 //  DisappearingNavSB
 //
 //  Created by Chris Gonzales on 3/8/14.
@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GNZNavBarToolkit.h"
 
-@interface GNZNeatScrollViewController : UIViewController
--(void)neatScroll:(UIScrollView *)scrollView;
+
+@interface GNZDemoTableViewController : GNZNavBarToolkit
+
 @end

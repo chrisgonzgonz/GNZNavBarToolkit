@@ -14,15 +14,14 @@
 		721054B918CC027E0012C6C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 721054B818CC027E0012C6C7 /* main.m */; };
 		721054BD18CC027E0012C6C7 /* GNZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 721054BC18CC027E0012C6C7 /* GNZAppDelegate.m */; };
 		721054C018CC027E0012C6C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 721054BE18CC027E0012C6C7 /* Main.storyboard */; };
-		721054C318CC027E0012C6C7 /* GNZViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 721054C218CC027E0012C6C7 /* GNZViewController.m */; };
 		721054C518CC027E0012C6C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 721054C418CC027E0012C6C7 /* Images.xcassets */; };
 		721054CC18CC027E0012C6C7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 721054CB18CC027E0012C6C7 /* XCTest.framework */; };
 		721054CD18CC027E0012C6C7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 721054AC18CC027E0012C6C7 /* Foundation.framework */; };
 		721054CE18CC027E0012C6C7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 721054B018CC027E0012C6C7 /* UIKit.framework */; };
 		721054D618CC027E0012C6C7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 721054D418CC027E0012C6C7 /* InfoPlist.strings */; };
 		721054D818CC027E0012C6C7 /* DisappearingNavSBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 721054D718CC027E0012C6C7 /* DisappearingNavSBTests.m */; };
-		721054E318CC02D10012C6C7 /* GNZShakaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 721054E218CC02D10012C6C7 /* GNZShakaTableViewController.m */; };
-		721054E618CC26EC0012C6C7 /* GNZNeatScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 721054E518CC26EC0012C6C7 /* GNZNeatScrollViewController.m */; };
+		721054E318CC02D10012C6C7 /* GNZDemoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 721054E218CC02D10012C6C7 /* GNZDemoTableViewController.m */; };
+		721054E618CC26EC0012C6C7 /* GNZNavBarToolkit.m in Sources */ = {isa = PBXBuildFile; fileRef = 721054E518CC26EC0012C6C7 /* GNZNavBarToolkit.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,18 +46,16 @@
 		721054BB18CC027E0012C6C7 /* GNZAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GNZAppDelegate.h; sourceTree = "<group>"; };
 		721054BC18CC027E0012C6C7 /* GNZAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GNZAppDelegate.m; sourceTree = "<group>"; };
 		721054BF18CC027E0012C6C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		721054C118CC027E0012C6C7 /* GNZViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GNZViewController.h; sourceTree = "<group>"; };
-		721054C218CC027E0012C6C7 /* GNZViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GNZViewController.m; sourceTree = "<group>"; };
 		721054C418CC027E0012C6C7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		721054CA18CC027E0012C6C7 /* DisappearingNavSBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DisappearingNavSBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		721054CB18CC027E0012C6C7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		721054D318CC027E0012C6C7 /* DisappearingNavSBTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DisappearingNavSBTests-Info.plist"; sourceTree = "<group>"; };
 		721054D518CC027E0012C6C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		721054D718CC027E0012C6C7 /* DisappearingNavSBTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DisappearingNavSBTests.m; sourceTree = "<group>"; };
-		721054E118CC02D10012C6C7 /* GNZShakaTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNZShakaTableViewController.h; sourceTree = "<group>"; };
-		721054E218CC02D10012C6C7 /* GNZShakaTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNZShakaTableViewController.m; sourceTree = "<group>"; };
-		721054E418CC26EC0012C6C7 /* GNZNeatScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNZNeatScrollViewController.h; sourceTree = "<group>"; };
-		721054E518CC26EC0012C6C7 /* GNZNeatScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNZNeatScrollViewController.m; sourceTree = "<group>"; };
+		721054E118CC02D10012C6C7 /* GNZDemoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNZDemoTableViewController.h; sourceTree = "<group>"; };
+		721054E218CC02D10012C6C7 /* GNZDemoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNZDemoTableViewController.m; sourceTree = "<group>"; };
+		721054E418CC26EC0012C6C7 /* GNZNavBarToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNZNavBarToolkit.h; sourceTree = "<group>"; };
+		721054E518CC26EC0012C6C7 /* GNZNavBarToolkit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNZNavBarToolkit.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,15 +115,11 @@
 		721054B218CC027E0012C6C7 /* DisappearingNavSB */ = {
 			isa = PBXGroup;
 			children = (
-				721054E418CC26EC0012C6C7 /* GNZNeatScrollViewController.h */,
-				721054E518CC26EC0012C6C7 /* GNZNeatScrollViewController.m */,
+				721054E818CD715C0012C6C7 /* GNZNavBarToolkit */,
+				721054BE18CC027E0012C6C7 /* Main.storyboard */,
 				721054BB18CC027E0012C6C7 /* GNZAppDelegate.h */,
 				721054BC18CC027E0012C6C7 /* GNZAppDelegate.m */,
-				721054BE18CC027E0012C6C7 /* Main.storyboard */,
-				721054E118CC02D10012C6C7 /* GNZShakaTableViewController.h */,
-				721054E218CC02D10012C6C7 /* GNZShakaTableViewController.m */,
-				721054C118CC027E0012C6C7 /* GNZViewController.h */,
-				721054C218CC027E0012C6C7 /* GNZViewController.m */,
+				721054E718CD70B20012C6C7 /* ViewControllers */,
 				721054C418CC027E0012C6C7 /* Images.xcassets */,
 				721054B318CC027E0012C6C7 /* Supporting Files */,
 			);
@@ -160,6 +153,24 @@
 				721054D418CC027E0012C6C7 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		721054E718CD70B20012C6C7 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				721054E118CC02D10012C6C7 /* GNZDemoTableViewController.h */,
+				721054E218CC02D10012C6C7 /* GNZDemoTableViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		721054E818CD715C0012C6C7 /* GNZNavBarToolkit */ = {
+			isa = PBXGroup;
+			children = (
+				721054E418CC26EC0012C6C7 /* GNZNavBarToolkit.h */,
+				721054E518CC26EC0012C6C7 /* GNZNavBarToolkit.m */,
+			);
+			name = GNZNavBarToolkit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,9 +276,8 @@
 			files = (
 				721054BD18CC027E0012C6C7 /* GNZAppDelegate.m in Sources */,
 				721054B918CC027E0012C6C7 /* main.m in Sources */,
-				721054E618CC26EC0012C6C7 /* GNZNeatScrollViewController.m in Sources */,
-				721054E318CC02D10012C6C7 /* GNZShakaTableViewController.m in Sources */,
-				721054C318CC027E0012C6C7 /* GNZViewController.m in Sources */,
+				721054E618CC26EC0012C6C7 /* GNZNavBarToolkit.m in Sources */,
+				721054E318CC02D10012C6C7 /* GNZDemoTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

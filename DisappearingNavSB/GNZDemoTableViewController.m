@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 GNZ. All rights reserved.
 //
 
-#import "GNZShakaTableViewController.h"
+#import "GNZDemoTableViewController.h"
 
-@interface GNZShakaTableViewController () <UIScrollViewDelegate,UITableViewDataSource, UITableViewDelegate>
+@interface GNZDemoTableViewController () <UIScrollViewDelegate,UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
@@ -26,7 +26,7 @@
 
 @end
 
-@implementation GNZShakaTableViewController
+@implementation GNZDemoTableViewController
 
 -(void)viewDidLoad
 {

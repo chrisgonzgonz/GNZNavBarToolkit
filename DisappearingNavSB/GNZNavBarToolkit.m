@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 GNZ. All rights reserved.
 //
 
-#import "GNZNeatScrollViewController.h"
+#import "GNZNavBarToolkit.h"
 
-@interface GNZNeatScrollViewController ()
+@interface GNZNavBarToolkit ()
 
 @end
 
-@implementation GNZNeatScrollViewController
+@implementation GNZNavBarToolkit
 
 # define kStatusBarHeight 20
 -(void)neatScroll:(UIScrollView *)scrollView
