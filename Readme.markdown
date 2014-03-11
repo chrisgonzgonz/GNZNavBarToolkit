@@ -1,13 +1,13 @@
 GNZNavBarToolkit
 ================
-GNZNavBarToolkit is a UITableViewController subclass that dynamically shrinks and expands the standard UINavigationBar and UINavigationItems, producing an "Instagram-style" navbar.
+GNZNavBarToolkit consists of GNZTableViewController, a UITableViewController subclass that dynamically shrinks and expands the standard UINavigationBar and UINavigationItems, producing an "Instagram-style" navbar.
 
 Setup
 =====
 + Clone this repo
 + Add the `GNZNavBarToolkit` folder to your project
-+ Import `GNZNavBarToolkit.h` in the header file of your `UITableViewController`
-+ Make `GNZNavBarToolkit` your UITableViewController's superclass
++ Import `GNZTableViewController.h` in the header file of your `UITableViewController`
++ Make `GNZTableViewController.h` your UITableViewController's superclass
 
 Usage
 =====

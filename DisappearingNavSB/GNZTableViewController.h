@@ -1,5 +1,5 @@
 //
-//  GNZNavBarToolkit.h
+//  GNZTableViewController.h
 //  DisappearingNavSB
 //
 //  Created by Chris Gonzales on 3/8/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GNZNavBarToolkit : UITableViewController
+@interface GNZTableViewController : UITableViewController
 -(void)neatScroll:(UIScrollView *)scrollView;
 @property (nonatomic) BOOL transitioning;
 @property (nonatomic, copy) NSArray *targetNavBarItems;

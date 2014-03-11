@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GNZNavBarToolkit.h"
+#import "GNZTableViewController.h"
 
 
-@interface GNZDemoTableViewController : GNZNavBarToolkit
+@interface GNZDemoTableViewController : GNZTableViewController
 
 @end

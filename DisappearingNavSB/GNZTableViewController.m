@@ -1,18 +1,18 @@
 //
-//  GNZNavBarToolkit.m
+//  GNZTableViewController.m
 //  DisappearingNavSB
 //
 //  Created by Chris Gonzales on 3/8/14.
 //  Copyright (c) 2014 GNZ. All rights reserved.
 //
 
-#import "GNZNavBarToolkit.h"
+#import "GNZTableViewController.h"
 
-@interface GNZNavBarToolkit ()
+@interface GNZTableViewController ()
 
 @end
 
-@implementation GNZNavBarToolkit
+@implementation GNZTableViewController
 
 static const CGFloat kStatusBarHeight = 20.0;
 
