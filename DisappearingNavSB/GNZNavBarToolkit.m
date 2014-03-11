@@ -16,7 +16,7 @@
 
 static const CGFloat StatusBarHeight = 20.0;
 
-//  allows for scroll resize/change messages on return/initialization
+//  allows for scroll resize/change messages on return/initialization, resets tableview scroll position and navbar when view appears
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -26,7 +26,6 @@ static const CGFloat StatusBarHeight = 20.0;
     [self.tableView scrollToRowAtIndexPath:topPath
                           atScrollPosition:UITableViewScrollPositionTop
                                   animated:YES];
-
 }
 
 //  stops scroll resize/change messages in preparation for a new view
