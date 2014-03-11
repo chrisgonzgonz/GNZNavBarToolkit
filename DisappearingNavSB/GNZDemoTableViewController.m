@@ -19,11 +19,6 @@
 {
     [super viewDidLoad];
     
-//  Set delegates
-    
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    
     UIButton *rightButton = [self setUpRightNavButton];
     UIButton *leftButton = [self setUpLeftNavButton];
     UILabel *titleLabel = [self setUpNavTitleLabel];
