@@ -22,11 +22,8 @@ static const CGFloat kStatusBarHeight = 20.0;
 {
     [super viewWillAppear:animated];
     self.transitioning = NO;
-
-    NSIndexPath *topPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView scrollToRowAtIndexPath:topPath
-                          atScrollPosition:UITableViewScrollPositionTop
-                                  animated:YES];
+    
+    [self scrollTableviewToTop];
 }
 
 //  stops scroll resize/change messages in preparation for a new view, reset navbar
@@ -40,9 +37,17 @@ static const CGFloat kStatusBarHeight = 20.0;
     self.navigationController.navigationBar.frame = CGRectMake(0, kStatusBarHeight, CGRectGetWidth(navFrame), CGRectGetHeight(navFrame));
 }
 
-#pragma mark Scroll event handler
+#pragma mark Tableview and navbar manipulation
 
-//  receives scrollview event and adjusts labels/buttons accordingly
+-(void)scrollTableviewToTop
+{
+    NSIndexPath *topPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView scrollToRowAtIndexPath:topPath
+                          atScrollPosition:UITableViewScrollPositionTop
+                                  animated:YES];
+}
+
+//  Scroll event handler, receives scrollview event and adjusts labels/buttons accordingly
 -(void)neatScroll:(UIScrollView *)scrollView
 {
     CGFloat offset = scrollView.contentOffset.y;
