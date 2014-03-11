@@ -19,7 +19,7 @@ Usage
 }
 ```
 
-+ Set up your navigation items! Add a `UIButton` or a `UILabel` to a container `UIView`. Use this container view to create a UIBarButtonItem (demonstrated below) or set this container view as your controller's navigationItem titleView.
++ Set up your navigation items! Add a `UIButton` or a `UILabel` to a container `UIView` and give both the navigation item and its container view the same frame. Use this container view to create a UIBarButtonItem (demonstrated below) or set this container view as your controller's navigationItem titleView.
 + Add all navigation item buttons/labels to `self.targetNavBarItems` (buttons and labels only, not their container views). GNZNavBarToolkit will only make changes to the UINavigationBar itself and items in this array. The container views are used only as context for navigation item customization. Examples:
 
 ```objective-c
@@ -53,7 +53,7 @@ Usage
 
 You Might Be Wondering...
 =========================
-+ Does GNZNavBarToolkit work with Storyboard? Yes it does. You'll have to turn off Auto Layout to have it work correctly 'out of the box', or you can sort out the correct container/button/label constraints.
++ Does GNZNavBarToolkit work with Storyboard? Yes it does. You'll have to turn off Auto Layout to have it work correctly 'out of the box', or you can sort out the correct container/button/label constraints. ***Remember to put your buttons/labels into container views with the same sized frame!
 
 
 To Do
