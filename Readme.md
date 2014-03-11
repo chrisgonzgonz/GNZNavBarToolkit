@@ -12,10 +12,11 @@ Setup
 Usage
 =====
 + Implement `UIScrollViewDelegate`'s' `scrollViewDidScroll:` method and call `[self neatScroll:scrollView]` as such:
-```- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+
+	- (void)scrollViewDidScroll:(UIScrollView *)scrollView
 	{
-    [self neatScroll:scrollView];
-	}```
+	  [self neatScroll:scrollView];
+	}
 
 
 To Do
