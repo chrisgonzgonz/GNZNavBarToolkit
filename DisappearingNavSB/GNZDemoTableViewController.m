@@ -8,10 +8,7 @@
 
 #import "GNZDemoTableViewController.h"
 
-@interface GNZDemoTableViewController () <UIScrollViewDelegate,UITableViewDataSource, UITableViewDelegate>
-
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
-
+@interface GNZDemoTableViewController ()
 
 @end
 
