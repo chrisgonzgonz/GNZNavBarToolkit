@@ -61,7 +61,7 @@ To Do
 + Testing
 + 'Out of the box' support for Auto Layout
 + Support for UIScrollview, UICollectionView
-+ Release this as a Cocoapod
++ Release this as a CocoaPod
 
 License
 =======
