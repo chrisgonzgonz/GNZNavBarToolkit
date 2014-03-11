@@ -21,6 +21,12 @@ static const CGFloat StatusBarHeight = 20.0;
 {
     [super viewWillAppear:animated];
     self.transitioning = NO;
+
+    NSIndexPath *topPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView scrollToRowAtIndexPath:topPath
+                          atScrollPosition:UITableViewScrollPositionTop
+                                  animated:YES];
+
 }
 
 //  stops scroll resize/change messages in preparation for a new view

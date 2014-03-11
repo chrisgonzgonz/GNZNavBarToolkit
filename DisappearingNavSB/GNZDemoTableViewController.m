@@ -34,7 +34,6 @@
     self.targetNavBarItems = @[rightButton, leftButton, titleLabel];
 }
 
-
 #pragma mark - Set up buttons and their containers programmatically
 
 -(UIButton *)setUpRightNavButton

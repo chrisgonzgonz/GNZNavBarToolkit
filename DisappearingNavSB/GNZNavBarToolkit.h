@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GNZNavBarToolkit : UIViewController
+@interface GNZNavBarToolkit : UITableViewController
 -(void)neatScroll:(UIScrollView *)scrollView;
 @property (nonatomic) BOOL transitioning;
-@property (strong, nonatomic) NSArray *targetNavBarItems;
+@property (nonatomic, copy) NSArray *targetNavBarItems;
 @end
