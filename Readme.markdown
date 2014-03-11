@@ -1,6 +1,6 @@
 GNZNavBarToolkit
 ================
-GNZNavBarToolkit is (at present) a UITableViewController subclass that dynamically shrinks and expands the standard UINavigationBar and UINavigationItems, producing an "Instagram-style" navbar.
+GNZNavBarToolkit is a UITableViewController subclass that dynamically shrinks and expands the standard UINavigationBar and UINavigationItems, producing an "Instagram-style" navbar.
 
 Setup
 =====
@@ -19,8 +19,8 @@ Usage
 }
 ```
 
-+ Set up your navigation items! Add a `UIButton` or a `UILabel` to a container `UIView`. Use this container view to create a UIBarButtonItem (shown below) or set as your controller's navigationItem titleView.
-+ Add all navbar buttons/labels to `self.targetNavBarItems`. GNZNavBarToolkit will only make changes to the UINavigationBar and items in this array. The containers are used as context for navigation item customization. Examples:
++ Set up your navigation items! Add a `UIButton` or a `UILabel` to a container `UIView`. Use this container view to create a UIBarButtonItem (shown below) or set this container view as your controller's navigationItem titleView.
++ Add all navbar buttons/labels (not their container views) to `self.targetNavBarItems`. GNZNavBarToolkit will only make changes to the UINavigationBar and items in this array. The containers are used as context for navigation item customization. Examples:
 
 ```objective-c
 -(UIButton *)setUpRightNavButton
@@ -53,7 +53,7 @@ Usage
 
 You Might Be Wondering...
 =========================
-+ Does GNZNavBarToolkit work in Storyboard? Yes it does. You'll have to turn off autolayout to have it work correctly out-of-the-box, or you can sort out the correct container/button/label constraints.
++ Does GNZNavBarToolkit work with Storyboard? Yes it does. You'll have to turn off autolayout to have it work correctly out-of-the-box, or you can sort out the correct container/button/label constraints.
 
 
 To Do
@@ -62,6 +62,20 @@ To Do
 + Support (constraints) for Auto Layout
 + Support for UIScrollview, UICollectionView
 + Release this as a Cocoapod
+
+License
+=======
+MIT License
+-----------
+The MIT License (MIT)
+
+Copyright (c) 2013 Andrea Mazzini
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 
