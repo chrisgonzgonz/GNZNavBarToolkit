@@ -23,14 +23,6 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    CGRect navFrame = self.navigationController.navigationBar.frame;
-    self.navigationController.navigationBar.frame = CGRectMake(0, 20, CGRectGetWidth(navFrame), CGRectGetHeight(navFrame));
-	// Do any additional setup after loading the view.
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

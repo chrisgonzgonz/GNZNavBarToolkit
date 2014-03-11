@@ -14,8 +14,9 @@
 
 @implementation GNZNavBarToolkit
 
-static const CGFloat StatusBarHeight = 20.0;
+static const CGFloat kStatusBarHeight = 20.0;
 
+#pragma mark View lifecycle
 //  allows for scroll resize/change messages on return/initialization, resets tableview scroll position and navbar when view appears
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -28,21 +29,27 @@ static const CGFloat StatusBarHeight = 20.0;
                                   animated:YES];
 }
 
-//  stops scroll resize/change messages in preparation for a new view
+//  stops scroll resize/change messages in preparation for a new view, reset navbar
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    
     self.transitioning = YES;
+    
+    CGRect navFrame = self.navigationController.navigationBar.frame;
+    self.navigationController.navigationBar.frame = CGRectMake(0, kStatusBarHeight, CGRectGetWidth(navFrame), CGRectGetHeight(navFrame));
 }
+
+#pragma mark Scroll event handler
 
 //  receives scrollview event and adjusts labels/buttons accordingly
 -(void)neatScroll:(UIScrollView *)scrollView
 {
     CGFloat offset = scrollView.contentOffset.y;
     CGRect navBarFrame = self.navigationController.navigationBar.frame;
-    CGFloat headerRemains = navBarFrame.origin.y + navBarFrame.size.height - StatusBarHeight;
-    CGFloat lowerBounds = -CGRectGetHeight(navBarFrame)-StatusBarHeight;
-    CGFloat upperBounds = -StatusBarHeight;
+    CGFloat headerRemains = navBarFrame.origin.y + navBarFrame.size.height - kStatusBarHeight;
+    CGFloat lowerBounds = -CGRectGetHeight(navBarFrame)-kStatusBarHeight;
+    CGFloat upperBounds = -kStatusBarHeight;
     
     NSLog(@"ContentOffset: %f, NavbarFrameOrigin: %f",offset,navBarFrame.origin.y);
     
@@ -50,7 +57,7 @@ static const CGFloat StatusBarHeight = 20.0;
         if (offset<=lowerBounds) { // everything back to normal
             
             //        Change navbar appearance; navbar is back to original size
-            CGRect newNavFrame = CGRectMake(CGRectGetMinX(navBarFrame), StatusBarHeight, CGRectGetWidth(navBarFrame), CGRectGetHeight(navBarFrame));
+            CGRect newNavFrame = CGRectMake(CGRectGetMinX(navBarFrame), kStatusBarHeight, CGRectGetWidth(navBarFrame), CGRectGetHeight(navBarFrame));
             self.navigationController.navigationBar.frame = newNavFrame;
             
             //        Change alpha on button items/title
@@ -95,7 +102,7 @@ static const CGFloat StatusBarHeight = 20.0;
             
         } else { // header completely gone
             //        Change navbar appearance; navbar appears to be behind status bar now
-            CGRect newNavFrame = CGRectMake(CGRectGetMinX(navBarFrame), StatusBarHeight- CGRectGetHeight(navBarFrame), CGRectGetWidth(navBarFrame), CGRectGetHeight(navBarFrame));
+            CGRect newNavFrame = CGRectMake(CGRectGetMinX(navBarFrame), kStatusBarHeight- CGRectGetHeight(navBarFrame), CGRectGetWidth(navBarFrame), CGRectGetHeight(navBarFrame));
             self.navigationController.navigationBar.frame = newNavFrame;
             
             //        Transform to shrink button items
