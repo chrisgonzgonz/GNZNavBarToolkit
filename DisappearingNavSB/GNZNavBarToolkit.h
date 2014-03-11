@@ -1,5 +1,5 @@
 //
-//  GNZNeatScrollViewController.h
+//  GNZNavBarToolkit.h
 //  DisappearingNavSB
 //
 //  Created by Chris Gonzales on 3/8/14.

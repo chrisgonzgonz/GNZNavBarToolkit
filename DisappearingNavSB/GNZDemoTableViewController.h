@@ -1,5 +1,5 @@
 //
-//  GNZShakaTableViewController.h
+//  GNZDemoTableViewController.h
 //  DisappearingNavSB
 //
 //  Created by Chris Gonzales on 3/8/14.
