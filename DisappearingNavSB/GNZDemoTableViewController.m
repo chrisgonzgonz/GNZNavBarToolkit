@@ -30,9 +30,10 @@
 
 -(UIButton *)setUpRightNavButton
 {
-    UIView *rightBarButtonContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
+    CGRect rightBarButtonFrame = CGRectMake(0, 0, 32, 32);
+    UIView *rightBarButtonContainer = [[UIView alloc] initWithFrame:rightBarButtonFrame];
     UIButton *rightBarButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    rightBarButton.frame = CGRectMake(0, 0, 32, 32);
+    rightBarButton.frame = rightBarButtonFrame;
     [rightBarButton setTitle:@"\U0001F4CC" forState:UIControlStateNormal];
     [rightBarButtonContainer addSubview:rightBarButton];
     
@@ -44,9 +45,10 @@
 
 -(UIButton *)setUpLeftNavButton
 {
-    UIView *leftBarButtonContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
+    CGRect leftBarButtonFrame = CGRectMake(0, 0, 32, 32);
+    UIView *leftBarButtonContainer = [[UIView alloc] initWithFrame:leftBarButtonFrame];
     UIButton *leftBarButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    leftBarButton.frame = CGRectMake(0, 0, 32, 32);
+    leftBarButton.frame = leftBarButtonFrame;
     [leftBarButton setTitle:@"\u2705" forState:UIControlStateNormal];
     [leftBarButtonContainer addSubview:leftBarButton];
     
@@ -58,8 +60,9 @@
 
 -(UILabel *)setUpNavTitleLabel
 {
-    UIView *barTitleContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 32)];
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 32)];
+    CGRect titleLabelFrame = CGRectMake(0, 0, 200, 32);
+    UIView *barTitleContainer = [[UIView alloc] initWithFrame:titleLabelFrame];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:titleLabelFrame];
     [titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:18]];
     [titleLabel setBackgroundColor:[UIColor clearColor]];
     [titleLabel setText:@"Title"];

@@ -21,6 +21,7 @@ static const CGFloat kStatusBarHeight = 20.0;
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
     self.transitioning = NO;
     
     [self scrollTableviewToTop];
@@ -62,7 +63,10 @@ static const CGFloat kStatusBarHeight = 20.0;
         if (offset<=lowerBounds) { // everything back to normal
             
             //        Change navbar appearance; navbar is back to original size
-            CGRect newNavFrame = CGRectMake(CGRectGetMinX(navBarFrame), kStatusBarHeight, CGRectGetWidth(navBarFrame), CGRectGetHeight(navBarFrame));
+            CGRect newNavFrame = CGRectMake(CGRectGetMinX(navBarFrame),
+                                            kStatusBarHeight,
+                                            CGRectGetWidth(navBarFrame),
+                                            CGRectGetHeight(navBarFrame));
             self.navigationController.navigationBar.frame = newNavFrame;
             
             //        Change alpha on button items/title
@@ -84,7 +88,10 @@ static const CGFloat kStatusBarHeight = 20.0;
             
         } else if (offset/2>lowerBounds && offset<=upperBounds) {
             //        Change navbar appearance
-            CGRect newNavFrame = CGRectMake(CGRectGetMinX(navBarFrame), -CGRectGetHeight(navBarFrame)-offset, CGRectGetWidth(navBarFrame), CGRectGetHeight(navBarFrame));
+            CGRect newNavFrame = CGRectMake(CGRectGetMinX(navBarFrame),
+                                            -CGRectGetHeight(navBarFrame)-offset,
+                                            CGRectGetWidth(navBarFrame),
+                                            CGRectGetHeight(navBarFrame));
             self.navigationController.navigationBar.frame = newNavFrame;
             
             //        Change alpha on button items/title
@@ -107,7 +114,10 @@ static const CGFloat kStatusBarHeight = 20.0;
             
         } else { // header completely gone
             //        Change navbar appearance; navbar appears to be behind status bar now
-            CGRect newNavFrame = CGRectMake(CGRectGetMinX(navBarFrame), kStatusBarHeight- CGRectGetHeight(navBarFrame), CGRectGetWidth(navBarFrame), CGRectGetHeight(navBarFrame));
+            CGRect newNavFrame = CGRectMake(CGRectGetMinX(navBarFrame),
+                                            kStatusBarHeight- CGRectGetHeight(navBarFrame),
+                                            CGRectGetWidth(navBarFrame),
+                                            CGRectGetHeight(navBarFrame));
             self.navigationController.navigationBar.frame = newNavFrame;
             
             //        Transform to shrink button items

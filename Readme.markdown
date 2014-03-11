@@ -25,16 +25,17 @@ Usage
 ```objective-c
 -(UIButton *)setUpRightNavButton
 {
-  UIView *rightBarButtonContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
-  UIButton *rightBarButton = [UIButton buttonWithType:UIButtonTypeCustom];
-  rightBarButton.frame = CGRectMake(0, 0, 32, 32);
-  [rightBarButton setTitle:@"\U0001F4CC" forState:UIControlStateNormal];
-  [rightBarButtonContainer addSubview:rightBarButton];
-
-  UIBarButtonItem *rightButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBarButtonContainer];
-  self.navigationItem.rightBarButtonItem = rightButtonItem;
-
-  return rightBarButton;
+    CGRect rightBarButtonFrame = CGRectMake(0, 0, 32, 32);
+    UIView *rightBarButtonContainer = [[UIView alloc] initWithFrame:rightBarButtonFrame];
+    UIButton *rightBarButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    rightBarButton.frame = rightBarButtonFrame;
+    [rightBarButton setTitle:@"\U0001F4CC" forState:UIControlStateNormal];
+    [rightBarButtonContainer addSubview:rightBarButton];
+    
+    UIBarButtonItem *rightButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBarButtonContainer];
+    self.navigationItem.rightBarButtonItem = rightButtonItem;
+    
+    return rightBarButton;
 }
 ```
 
