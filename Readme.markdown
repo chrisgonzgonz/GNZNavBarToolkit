@@ -60,6 +60,7 @@ You Might Be Wondering...
 To Do
 =====
 + Testing
++ Support for non-translucent UINavigationBar
 + 'Out of the box' support for Auto Layout
 + Support for UIScrollview, UICollectionView
 + Release this as a CocoaPod
