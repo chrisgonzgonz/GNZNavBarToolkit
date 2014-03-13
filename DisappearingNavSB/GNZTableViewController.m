@@ -23,6 +23,7 @@ static const CGFloat kStatusBarHeight = 20.0;
     [super viewWillAppear:animated];
     
     self.transitioning = NO;
+    NSLog(@"NavBar type: %@", self.navigationController.navigationBar.translucent ? @"true" : @"false");
     
     [self scrollTableViewToTop];
 }
@@ -60,72 +61,152 @@ static const CGFloat kStatusBarHeight = 20.0;
     NSLog(@"ContentOffset: %f, NavbarFrameOrigin: %f",offset,navBarFrame.origin.y);
     
     if (!self.transitioning) {
-        if (offset<=lowerBounds) { // everything back to normal
-            
-            //        Change navbar appearance; navbar is back to original size
-            CGRect newNavFrame = CGRectMake(CGRectGetMinX(navBarFrame),
-                                            kStatusBarHeight,
-                                            CGRectGetWidth(navBarFrame),
-                                            CGRectGetHeight(navBarFrame));
-            self.navigationController.navigationBar.frame = newNavFrame;
-            
-            //        Change alpha on button items/title
-            for (UIView *view in self.targetNavBarItems) {
-                view.alpha = 1;
+        if (self.navigationController.navigationBar.translucent) {
+            if (offset<=lowerBounds) { // everything back to normal
+                
+                //        Change navbar appearance; navbar is back to original size
+                CGRect newNavFrame = CGRectMake(CGRectGetMinX(navBarFrame),
+                                                kStatusBarHeight,
+                                                CGRectGetWidth(navBarFrame),
+                                                CGRectGetHeight(navBarFrame));
+                self.navigationController.navigationBar.frame = newNavFrame;
+                
+                //        Change alpha on button items/title
+                for (UIView *view in self.targetNavBarItems) {
+                    view.alpha = 1;
+                }
+                
+                //        Transform to shrink/enlarge button items/title
+                for (UIView *view in self.targetNavBarItems) {
+                    view.transform = CGAffineTransformMakeScale(1, 1);
+                }
+                
+                //       Reposition shrinking buttons to allow for background fade effect
+                for (UIView *view in self.targetNavBarItems) {
+                    CGRect buttonOrTitleFrame = view.frame;
+                    buttonOrTitleFrame.origin.y = 0;
+                    view.frame = buttonOrTitleFrame;
+                }
+                
+            } else if (offset/2>lowerBounds && offset<=upperBounds) {
+                //        Change navbar appearance
+                CGRect newNavFrame = CGRectMake(CGRectGetMinX(navBarFrame),
+                                                -CGRectGetHeight(navBarFrame)-offset,
+                                                CGRectGetWidth(navBarFrame),
+                                                CGRectGetHeight(navBarFrame));
+                self.navigationController.navigationBar.frame = newNavFrame;
+                
+                //        Change alpha on button items/title
+                for (UIView *view in self.targetNavBarItems) {
+                    view.alpha = headerRemains/navBarFrame.size.height;;
+                }
+                
+                //        Transform to shrink/enlarge button items/title
+                for (UIView *view in self.targetNavBarItems) {
+                    view.transform = CGAffineTransformMakeScale(1-(offset+64)/2/44, 1-(offset+64)/2/44);
+                }
+                
+                
+                //        Reposition shrinking buttons/title to allow for background fade effect
+                for (UIView *view in self.targetNavBarItems) {
+                    CGRect buttonOrTitleFrame = view.frame;
+                    buttonOrTitleFrame.origin.y = (offset+64)/2;
+                    view.frame = buttonOrTitleFrame;
+                }
+                
+            } else { // header completely gone
+                //        Change navbar appearance; navbar appears to be behind status bar now
+                CGRect newNavFrame = CGRectMake(CGRectGetMinX(navBarFrame),
+                                                kStatusBarHeight- CGRectGetHeight(navBarFrame),
+                                                CGRectGetWidth(navBarFrame),
+                                                CGRectGetHeight(navBarFrame));
+                self.navigationController.navigationBar.frame = newNavFrame;
+                
+                //        Transform to shrink button items
+                for (UIView *view in self.targetNavBarItems) {
+                    view.transform = CGAffineTransformMakeScale(0, 0);
+                }
+                
             }
+        } else {
+            offset = scrollView.contentOffset.y;
+            navBarFrame = self.navigationController.navigationBar.frame;
+            headerRemains = navBarFrame.origin.y + navBarFrame.size.height - kStatusBarHeight;
+            lowerBounds = 0;
+            upperBounds = kStatusBarHeight;
             
-            //        Transform to shrink/enlarge button items/title
-            for (UIView *view in self.targetNavBarItems) {
-                view.transform = CGAffineTransformMakeScale(1, 1);
+            if (offset<=lowerBounds) { // everything back to normal
+                
+                //        Change navbar appearance; navbar is back to original size
+                CGRect newNavFrame = CGRectMake(CGRectGetMinX(navBarFrame),
+                                                kStatusBarHeight,
+                                                CGRectGetWidth(navBarFrame),
+                                                CGRectGetHeight(navBarFrame));
+                self.navigationController.navigationBar.frame = newNavFrame;
+                
+                //        Change alpha on button items/title
+                for (UIView *view in self.targetNavBarItems) {
+                    view.alpha = 1;
+                }
+                
+                //        Transform to shrink/enlarge button items/title
+                for (UIView *view in self.targetNavBarItems) {
+                    view.transform = CGAffineTransformMakeScale(1, 1);
+                }
+                
+                //       Reposition shrinking buttons to allow for background fade effect
+                for (UIView *view in self.targetNavBarItems) {
+                    CGRect buttonOrTitleFrame = view.frame;
+                    buttonOrTitleFrame.origin.y = 0;
+                    view.frame = buttonOrTitleFrame;
+                }
+                
+            } else if (offset/2>lowerBounds && offset<=upperBounds) {
+                //        Change navbar appearance
+                CGRect newNavFrame = CGRectMake(CGRectGetMinX(navBarFrame),
+                                                -CGRectGetHeight(navBarFrame)-offset,
+                                                CGRectGetWidth(navBarFrame),
+                                                CGRectGetHeight(navBarFrame));
+                self.navigationController.navigationBar.frame = newNavFrame;
+                
+                //        Change alpha on button items/title
+                for (UIView *view in self.targetNavBarItems) {
+                    view.alpha = headerRemains/navBarFrame.size.height;;
+                }
+                
+                //        Transform to shrink/enlarge button items/title
+                for (UIView *view in self.targetNavBarItems) {
+                    view.transform = CGAffineTransformMakeScale(1-(offset+64)/2/44, 1-(offset+64)/2/44);
+                }
+                
+                
+                //        Reposition shrinking buttons/title to allow for background fade effect
+                for (UIView *view in self.targetNavBarItems) {
+                    CGRect buttonOrTitleFrame = view.frame;
+                    buttonOrTitleFrame.origin.y = (offset+64)/2;
+                    view.frame = buttonOrTitleFrame;
+                }
+                
+            } else { // header completely gone
+                //        Change navbar appearance; navbar appears to be behind status bar now
+                NSLog(@"header gone");
+                CGRect newNavFrame = CGRectMake(CGRectGetMinX(navBarFrame),
+                                                kStatusBarHeight- CGRectGetHeight(navBarFrame),
+                                                CGRectGetWidth(navBarFrame),
+                                                CGRectGetHeight(navBarFrame));
+                self.navigationController.navigationBar.frame = newNavFrame;
+                self.tableView.frame = CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height+24);
+                [self.tableView setContentOffset:CGPointMake(0,offset) animated: NO];
+                
+                //        Transform to shrink button items
+                for (UIView *view in self.targetNavBarItems) {
+                    view.transform = CGAffineTransformMakeScale(0, 0);
+                }
+                
             }
-            
-            //       Reposition shrinking buttons to allow for background fade effect
-            for (UIView *view in self.targetNavBarItems) {
-                CGRect buttonOrTitleFrame = view.frame;
-                buttonOrTitleFrame.origin.y = 0;
-                view.frame = buttonOrTitleFrame;
-            }
-            
-        } else if (offset/2>lowerBounds && offset<=upperBounds) {
-            //        Change navbar appearance
-            CGRect newNavFrame = CGRectMake(CGRectGetMinX(navBarFrame),
-                                            -CGRectGetHeight(navBarFrame)-offset,
-                                            CGRectGetWidth(navBarFrame),
-                                            CGRectGetHeight(navBarFrame));
-            self.navigationController.navigationBar.frame = newNavFrame;
-            
-            //        Change alpha on button items/title
-            for (UIView *view in self.targetNavBarItems) {
-                view.alpha = headerRemains/navBarFrame.size.height;;
-            }
-            
-            //        Transform to shrink/enlarge button items/title
-            for (UIView *view in self.targetNavBarItems) {
-                view.transform = CGAffineTransformMakeScale(1-(offset+64)/2/44, 1-(offset+64)/2/44);
-            }
-            
-            
-            //        Reposition shrinking buttons/title to allow for background fade effect
-            for (UIView *view in self.targetNavBarItems) {
-                CGRect buttonOrTitleFrame = view.frame;
-                buttonOrTitleFrame.origin.y = (offset+64)/2;
-                view.frame = buttonOrTitleFrame;
-            }
-            
-        } else { // header completely gone
-            //        Change navbar appearance; navbar appears to be behind status bar now
-            CGRect newNavFrame = CGRectMake(CGRectGetMinX(navBarFrame),
-                                            kStatusBarHeight- CGRectGetHeight(navBarFrame),
-                                            CGRectGetWidth(navBarFrame),
-                                            CGRectGetHeight(navBarFrame));
-            self.navigationController.navigationBar.frame = newNavFrame;
-            
-            //        Transform to shrink button items
-            for (UIView *view in self.targetNavBarItems) {
-                view.transform = CGAffineTransformMakeScale(0, 0);
-            }
-            
+
         }
+        
         
     }
 }
